@@ -84,14 +84,14 @@ The system uses a bidirectional Serial protocol to communicate between the PC Cl
 
 ```mermaid
 graph TD
-    subgraph Hardware [Physical Device (ESP32)]
+    subgraph Hardware ["Physical Device (ESP32)"]
         A[Keypad 4x4] -->|Keypress| B[ESP32 Core]
         C[RFID PN532] -->|Tag Scan| B
         B -->|Display UI| D[TFT ILI9341]
         E[SPIFFS Storage] <-->|Read/Write Icons| B
     end
 
-    subgraph PC [Computer (Windows)]
+    subgraph PC ["Computer (Windows)"]
         F[Serial Handler] <-->|USB Serial| B
         G[OrcaApp Logic] <--> F
         H[Encryption Manager] <--> G
