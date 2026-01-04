@@ -2,164 +2,193 @@
 <div align="center">
 
 # 🐋 ORCA DECK
-
 ### The Ultimate RFID-Based Password Manager & PC Controller
-*Secure. Intuitive. Hardware-Backed.*
 
-[![GitHub](https://img.shields.io/badge/GitHub-Muhib--Mehdi-181717?style=for-the-badge&logo=github)](https://github.com/Muhib-Mehdi)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Muhib--Mehdi-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/muhib-mehdi-677bb7391/)
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white)](https://arduino.cc)
+[![Python](https://img.shields.io/badge/Made%20with-Python-blue?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Platform](https://img.shields.io/badge/Platform-Windows-00a2ed?style=for-the-badge&logo=windows&logoColor=white)](https://microsoft.com)
+[![Hardware](https://img.shields.io/badge/Hardware-ESP32-ff0000?style=for-the-badge&logo=espressif&logoColor=white)](https://espressif.com)
+[![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)]()
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+
+[**Explore the docs »**](#)
+<br />
+[View Demo](#)
+·
+[Report Bug](#)
+·
+[Request Feature](#)
 
 </div>
 
 ---
 
 ## 📑 Table of Contents
-- [Overview](#-overview)
-- [Why Choose ORCA DECK?](#-why-choose-orca-deck)
-- [Key Features](#-key-features)
-- [Hardware & Architecture](#-hardware--architecture)
-- [Installation Or Setup](#-installation-or-setup)
-- [Usage Guide](#-usage-guide)
-- [Screenshots](#-screenshots)
-- [Contributing](#-contributing)
-- [License](#-license)
+1. [Overview](#-overview)
+2. [Why ORCA DECK?](#-why-orca-deck)
+3. [Features](#-features)
+4. [Architecture](#-architecture)
+5. [Hardware & Wiring](#-hardware--wiring)
+6. [Installation](#-installation)
+7. [Usage](#-usage)
+8. [Screenshots](#-screenshots)
+9. [Contributing](#-contributing)
+10. [License](#-license)
 
 ---
 
-## 🌟 Overview
+## 🌊 Overview
 
-**ORCA DECK** is a high-security, hardware-integrated password manager and application launcher designed to bridge the gap between physical security and digital convenience. By leveraging **RFID technology**, it transforms a physical card into a secure key for your digital life, offering seamless authentication and workflow automation.
+**ORCA DECK** is a powerful, open-source hardware interface designed to bridge the gap between physical security and digital convenience. It combines **application launching**, **password management**, and **physical security** into a single, sleek device powered by an **ESP32** microcontroller and a **Python PC client**.
 
-I built ORCA DECK to solve a common problem: **securely managing passwords without relying solely on software-based master passwords.** With ORCA DECK, your physical presence (verified via RFID) is the key.
+Unlike standard macro pads, ORCA DECK features a **built-in RFID reader** and **encrypted password storage**, making it a security key for your digital life. Launch apps, type complex passwords instantly, and lock/unlock your PC with a physical tag—all from one device.
 
 ---
 
-## 🚀 Why Choose ORCA DECK?
+## ⚖️ Why ORCA DECK?
 
-| Feature | 🐋 ORCA DECK | 📱 Traditional Software Managers | 🔑 Physical Security Keys |
+| Feature | 🐋 ORCA DECK | 🎹 Elgato Stream Deck | 🔑 YubiKey |
 | :--- | :---: | :---: | :---: |
-| **Physical 2FA** | ✅ Built-in RFID | ❌ No | ✅ Yes |
-| **App Launcher** | ✅ One-tap Launch | ❌ No | ❌ No |
-| **Offline Storage** | ✅ SPIFFS Encrypted | ⚠️ Cloud/Local DB | ❌ No Storage (usually) |
-| **Custom Hardware** | ✅ DIY / Extensible | ❌ Software Only | ❌ Fixed Hardware |
-| **Cost** | 💰 Affordable DIY | 💸 Monthly Subscriptions | 💵 Expensive |
+| **Price** | **Low (DIY)** | High ($150+) | Medium ($50+) |
+| **App Launching** | ✅ | ✅ | ❌ |
+| **Password Typing** | ✅ (Encrypted) | ❌ (Plugins only) | ✅ |
+| **RFID Unlocking** | ✅ **Built-in** | ❌ | ⚠️ (NFC Versions) |
+| **PC Locking** | ✅ | ❌ | ❌ |
+| **Offline Storage** | ✅ (SPIFFS) | ❌ | ✅ |
+| **Open Source** | ✅ | ❌ | ⚠️ |
 
 ---
 
-## ✨ Key Features
+## 🚀 Features
 
-### 🔒 Security & Authentication
-- **RFID-Based Access**: The system remains locked until a registered RFID card is tapped.
-- **Hardware Encryption**: Credentials are stored securely on the device's flash memory (SPIFFS).
-- **Auto-Lock Timeout**: Automatically secures the deck after a configurable period of inactivity.
-- **Emergency Recovery**: Secure Q&A fallback in case of lost cards.
+### 🛡️ Security & Privacy
+*   **RFID System Lock/Unlock**: Use a physical NFC tag/card to unlock your PC or access the password manager.
+*   **AES Encryption**: All passwords are stored using high-grade `AES` encryption via `pycryptodome`.
+*   **Zero-Latency Storage**: Credentials are stored securely on the device's flash memory (SPIFFS)—no SD cards required.
+*   **Emergency Recovery**: Secure Q&A fallback in case of lost cards.
 
-### 🛠️ Productivity & Control
-- **One-Tap App Launching**: Map specific RFID cards or menu buttons to launch desktop applications instantly.
-- **Password Auto-Fill**: Select an account on the deck, and it types your password securely into your PC.
-- **Cross-Platform PC Client**: A sleek Python (CustomTkinter) application to manage your keys and settings.
+### ⚡ Productivity
+*   **Instant App Launcher**: Map physical keys to launch your favorite applications (Discord, VS Code, Browser, etc.).
+*   **Macro Support**: Execute complex key combinations with a single press.
+*   **Clipboard Manager**: (Planned) History of clipboard items.
 
-### 💾 Advanced Storage
-- **SPIFFS Architecture**: Uses the ESP32's raw flash storage for high-speed, reliable data retention—no SD cards required.
-- **Zero-Latency**: Instant read/write operations for a snappy user experience.
+### 🖥️ Hardware Integration
+*   **Dynamic Icon Sync**: Upload icons from your PC directly to the device's ILI9341 display.
+*   **Real-time Feedback**: Visual feedback on the TFT screen when keys are pressed or apps are launched.
+*   **System Tray App**: The Python client runs quietly in the background (`pystray`).
 
 ---
 
-## 🏗 Hardware & Architecture
+## 🏗️ Architecture
 
-ORCA DECK operates on a Master-Slave architecture where the **Hardware Deck** handles security and inputs, while the **PC Client** executes commands.
+The system uses a bidirectional Serial protocol to communicate between the PC Client (Brain) and the ESP32 (Body).
 
 ```mermaid
 graph TD
-    subgraph Hardware_Deck ["🖥️ Hardware Deck (ESP32)"]
-        A[RFID Reader RC522] -->|SPI| B(ESP32 MCU)
-        C[TFT Display] <-->|SPI| B
-        D[Matrix Keypad] -->|GPIO| B
-        B <-->|SPIFFS| E[(Flash Storage)]
+    subgraph Hardware [Physical Device (ESP32)]
+        A[Keypad 4x4] -->|Keypress| B[ESP32 Core]
+        C[RFID PN532] -->|Tag Scan| B
+        B -->|Display UI| D[TFT ILI9341]
+        E[SPIFFS Storage] <-->|Read/Write Icons| B
     end
 
-    subgraph PC_System ["💻 PC System (Windows)"]
-        B <-->|Serial / USB| F[Python Backend]
-        F <--> G[CustomTkinter UI]
-        F --> H{System Actions}
-        H -->|Type Password| I[Keyboard Emulation]
-        H -->|Run App| J[Process Launcher]
+    subgraph PC [Computer (Windows)]
+        F[Serial Handler] <-->|USB Serial| B
+        G[OrcaApp Logic] <--> F
+        H[Encryption Manager] <--> G
+        I[App Launcher] <--> G
+        J[Vault DB] <--> H
     end
+
+    G -->|Type Text| K[PyAutoGUI/PyPerclip]
+    G -->|Lock/Unlock| L[Windows API]
 ```
 
 ---
 
-## ⚙ Installation Or Setup
+## 🔧 Hardware & Wiring
 
-### Prerequisites
+To build your own ORCA DECK, you will need the following components and wiring configuration:
 
-| Component | Requirement | Notes |
-| :--- | :--- | :--- |
-| **OS** | Windows 10/11 | Linux/Mac support coming soon |
-| **Python** | v3.8+ | Ensure added to PATH |
-| **Hardware** | ESP32 + RC522 | See wiring guide below |
-| **Drivers** | CP210x Drivers | For ESP32 Serial comms |
+| Component | Description |
+| :--- | :--- |
+| **Microcontroller** | ESP32 Development Board (CP210x Drivers) |
+| **Display** | 2.4" or 2.8" TFT SPI Display (ILI9341) |
+| **Input** | 4x4 Matrix Membrane Keypad |
+| **NFC/RFID** | PN532 NFC Module (V3) or RC522 |
+| **Case** | 3D Printed Enclosure |
 
-### High-Level Setup Steps
+### 🔌 Wiring Guide
 
-<details>
-<summary><b>1. Hardware Assembly</b> (Click to Expand)</summary>
+**RFID Module (SPI)**
+*   **SDA**: GPIO 21
+*   **SCK**: GPIO 18
+*   **MOSI**: GPIO 23
+*   **MISO**: GPIO 19
 
-1. Connect the **RC522 RFID Module** to the ESP32 (SPI Pins: SDA-21, SCK-18, MOSI-23, MISO-19).
-2. Connect the **TFT Display** and **Keypad** according to the schema in `docs/wiring.md`.
-3. Flash the firmware located in `firmware/orca_deck_ino` using Arduino IDE.
-
-</details>
-
-<details>
-<summary><b>2. Software Installation</b> (Click to Expand)</summary>
-
-1. **Clone the Repo:**
-   ```bash
-   git clone https://github.com/Muhib-Mehdi/orca-deck.git
-   cd orca-deck
-   ```
-
-2. **Install Dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Configure Settings:**
-   - Open `assets/config.json`.
-   - Set your correct `COM_PORT` (check Device Manager).
-
-4. **Run the App:**
-   ```bash
-   python PC_client/orca_deck_app.py
-   ```
-
-</details>
+*(Connect other components as per `docs/wiring.md`)*
 
 ---
 
-## 🎮 Usage Guide
+## 📦 Installation
 
-### 1. First-Time Setup
-- Launch the PC Client.
-- You will be asked to set **Security Questions**. **Do not forget these!** They are your only way back if you lose your Master RFID card.
+### Prerequisites
+*   Windows 10/11
+*   Python 3.10+
+*   Arduino IDE (for flashing firmware)
 
-### 2. Registering Cards
-- Go to the **Settings** tab.
-- Click **"Add New Card"**.
-- Tap your RFID card on the hardware deck.
-- Assign a function (e.g., "Unlock PC", "Launch Spotify", "Type Gmail Password").
+### 1. Python Client Setup
+```bash
+# Clone the repository
+git clone https://github.com/Muhib-Mehdi/O.R.C.A.-DECK.git
+cd orca-deck
 
-### 3. Daily Workflow
-1. **Unlock**: Tap your Master Card to unlock the deck.
-2. **Select**: Use the touch screen or keypad to scroll through your saved credentials.
-3. **Execute**: Press "Enter" to auto-type the password or launch the app on your PC.
+# Install dependencies
+pip install -r requirements.txt
+```
 
-> [!NOTE]
-> Ensure your cursor is in the correct password field before triggering the "Type Password" command!
+### 2. Hardware Firmware Setup
+1.  Open `sketch_oct16a/sketch_oct16a.ino` in Arduino IDE.
+2.  Install the following libraries via Library Manager:
+    *   `Adafruit GFX`, `Adafruit ILI9341`, `Keypad`, `Adafruit PN532`
+3.  Select your ESP32 board and port.
+4.  **Upload** the sketch.
+
+---
+
+## 💡 Usage
+
+### Starting the App
+Run the main python script to start the client:
+```bash
+python "PC client/orca_deck_app.py"
+```
+
+### Workflow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant ESP32 as ORCA Device
+    participant PC as PC Client
+    participant App as Target App
+
+    User->>ESP32: Press Key 'A'
+    ESP32->>PC: Send Serial Command "KEY_A"
+    PC->>PC: Lookup Action for "KEY_A"
+    alt is App Launch
+        PC->>App: Launch Executable
+        PC-->>ESP32: Send "ACK_LAUNCH"
+    else is Password Type
+        PC->>PC: Decrypt Password
+        PC->>App: Type Password (Keyboard Emulation)
+    end
+    ESP32->>User: Visual Feedback (Flash Icon)
+```
+
+1.  **Dashboard**: The main window allows you to configure keys.
+2.  **RFID Setup**: Go to Settings > "Add New Card" and scan your tag to register it as a Master Key.
+3.  **App Mapping**: Click a slot to assign an `.exe` or application alias.
+4.  **Password Vault**: Add credentials and map them to physical keys.
 
 ---
 
@@ -167,35 +196,33 @@ graph TD
 
 ### 🖥️ The Hardware
 *Custom-built PCB with ESP32, TFT Display, and RFID Reader.*
+
 ![Hardware Setup](assets/hardware_components.jpg)
 
 ### 📟 The Interface
 *Clean, futuristic menu running on the embedded display.*
+
 ![Running Device](assets/running_device.jpg)
 
 ---
 
 ## 🤝 Contributing
 
-I welcome contributions from the community! Whether it's adding new features, fixing bugs, or improving documentation, your help is appreciated.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-1. **Fork** the repository.
-2. Create a new branch: `git checkout -b feature/AmazingFeature`
-3. Commit your changes: `git commit -m 'Add some AmazingFeature'`
-4. Push to the branch: `git push origin feature/AmazingFeature`
-5. Open a **Pull Request**.
-
----
-
-<div align="center">
-
-## 📄 License
-
-Distributed under the **MIT License**. See `LICENSE` for more information.
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
 
 ---
 
-### Developed with ❤️ by **Muhib Mehdi**
-[GitHub Profile](https://github.com/Muhib-Mehdi) • [LinkedIn](https://www.linkedin.com/in/muhib-mehdi-677bb7391/)
+## 📞 License & Contact
 
-</div>
+Distributed under the MIT License. See `LICENSE` for more information.
+
+**Project Link:** [https://github.com/Muhib-Mehdi/O.R.C.A.-DECK](https://github.com/Muhib-Mehdi/O.R.C.A.-DECK)
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/muhib-mehdi)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](#)
